@@ -12,10 +12,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Author',
-            fields=[
-                ('author_id', models.AutoField(editable=False, primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=255)),
-            ],
-        ),
-    ]
+            name='Author', fields=[
+                ('author_id', models.AutoField(
+                    editable=False, primary_key=True, serialize=False)), ('name', models.CharField(
+                        max_length=255)), ], ), ]
