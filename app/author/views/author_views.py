@@ -3,9 +3,9 @@ from core.models import Author
 from author.serializers import AuthorSerializer
 
 
-class AuthorApi(generics.ListCreateAPIView):
+class AuthorApi(generics.ListAPIView):
     """
-    API view to retrieve list of authors or create new
+    API view to retrieve list of authors
     """
     queryset = Author.objects.all().order_by("name")
     serializer_class = AuthorSerializer
@@ -13,7 +13,7 @@ class AuthorApi(generics.ListCreateAPIView):
 
 class AuthorCreateApi(generics.CreateAPIView):
     """
-    API view to retrieve, update or delete author
+    API view to create author
     """
     queryset = Author.objects.all().order_by("name")
     serializer_class = AuthorSerializer
