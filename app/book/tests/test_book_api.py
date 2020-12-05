@@ -12,7 +12,7 @@ def create_author(full_name):
     return author
 
 
-BOOK_URL = reverse("book:create")
+BOOK_URL = reverse("book:book-list")
 
 
 class BookApiTests(TestCase):

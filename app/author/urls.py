@@ -1,13 +1,14 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
+from django.urls import path, include
 from author import views
+
+
+router = DefaultRouter()
+router.register("authors", views.AuthorViewSet)
 
 app_name = 'author'
 
+
 urlpatterns = [
-    path('author', views.AuthorApi.as_view()),
-    path(
-            'author/create',
-            views.AuthorCreateApi.as_view(),
-            name='create'
-        )
+    path('', include((router.urls)))
 ]

@@ -5,7 +5,7 @@ from rest_framework import status
 from core.models import Author
 
 
-CREATE_AUTHOR_URL = reverse("author:create")
+AUTHOR_URL = reverse("author:author-list")
 
 
 class AuthorApiTests(TestCase):
@@ -21,7 +21,7 @@ class AuthorApiTests(TestCase):
         Test author is created successfuly
         """
         payload = {'name': 'Joe Bloggs'}
-        res = self.client.post(CREATE_AUTHOR_URL, payload)
+        res = self.client.post(AUTHOR_URL, payload)
 
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
         test_author = Author.objects.get(author_id=res.data['author_id'])

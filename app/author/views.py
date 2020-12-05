@@ -1,19 +1,11 @@
-from rest_framework import generics
+from rest_framework import viewsets
 from core.models import Author
 from author.serializers import AuthorSerializer
 
 
-class AuthorApi(generics.ListAPIView):
+class AuthorViewSet(viewsets.ModelViewSet):
     """
-    API view to retrieve list of authors
+    Author viewset for basic C.R.U.D operations
     """
-    queryset = Author.objects.all().order_by("name")
-    serializer_class = AuthorSerializer
-
-
-class AuthorCreateApi(generics.CreateAPIView):
-    """
-    API view to create author
-    """
-    queryset = Author.objects.all().order_by("name")
+    queryset = Author.objects.all()
     serializer_class = AuthorSerializer
