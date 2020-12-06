@@ -5,11 +5,29 @@ from rest_framework import status
 from core.models import Book, Author
 
 
-def create_author(full_name):
-    author = Author.objects.create(
-        name=full_name
+def sample_author(name):
+    """
+    Create and return sample author
+    """
+    return Author.objects.create(name=name)
+
+
+def sample_book(name):
+    """
+    Create and return sample book
+    """
+    return Book.objects.create(
+        name=name,
+        edition='2nd',
+        publication_year=2005
     )
-    return author
+
+
+def detail_url(book_id):
+    """
+    Return book detail URL
+    """
+    return reverse("book:book-detail", args=[book_id])
 
 
 BOOK_URL = reverse("book:book-list")
@@ -27,7 +45,7 @@ class BookApiTests(TestCase):
         """
         Test book is created successfuly
         """
-        author_1 = create_author("Larry Lorem")
+        author_1 = sample_author("Larry Lorem")
 
         payload = {
             'name': 'Django Cook Book',
@@ -40,3 +58,70 @@ class BookApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
         test_book = Book.objects.get(book_id=res.data['book_id'])
         self.assertEqual(test_book.name, payload['name'])
+
+    def test_list_book_success(self):
+        """
+        Test books is listed successfuly
+        """
+
+        book_1 = sample_book('Test Book')
+        book_2 = sample_book('Another Book')
+
+        res = self.client.get(BOOK_URL)
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(res.data), 2)
+        self.assertIn(book_1.name, res.data[0]['name'])
+        self.assertIn(book_2.name, res.data[1]['name'])
+
+    def test_detail_view_book_success(self):
+        """
+        Test succesfully view one book
+        """
+
+        book_1 = sample_book('The Story of Lorem Ipsum')
+        URL = detail_url(book_1.book_id)
+
+        res = self.client.get(URL)
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(book_1.name, res.data['name'])
+
+    def test_update_book_success(self):
+        """
+        Test succesfully edit book
+        """
+        author_1 = sample_author('Pluto')
+        book_1 = sample_book('Tom & Jerry')
+        book_id = Book.objects.get(name=book_1).book_id
+
+        URL = detail_url(book_id)
+
+        data = {
+            'name': 'Looney Toons',
+            'edition': '4th',
+            'publication_year': 2019,
+            'authors': [author_1.author_id]
+        }
+        res = self.client.put(URL, data)
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(book_id, res.data['book_id'])
+        self.assertIn(author_1.author_id, res.data['authors'])
+        self.assertNotEqual(book_1.name, res.data['name'])
+        self.assertNotEqual(
+            book_1.publication_year,
+            res.data['publication_year']
+        )
+        self.assertNotEqual(book_1.edition, res.data['edition'])
+
+    def test_delete_book_success(self):
+        """
+        Test succesfully delete book
+        """
+        book_1 = sample_book('Fake book')
+        book_id = Book.objects.get(name=book_1).book_id
+        URL = detail_url(book_id)
+
+        res = self.client.delete(URL)
+
+        self.assertEqual(res.status_code, status.HTTP_204_NO_CONTENT)
