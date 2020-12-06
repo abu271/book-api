@@ -11,7 +11,7 @@ class BookViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """
-        Return a list of filtered books if a param is 
+        Return a list of filtered books if a param is
         set otherwise return all of the books
         """
         name = self.request.query_params.get('name')
