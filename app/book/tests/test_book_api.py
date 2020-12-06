@@ -125,3 +125,61 @@ class BookApiTests(TestCase):
         res = self.client.delete(URL)
 
         self.assertEqual(res.status_code, status.HTTP_204_NO_CONTENT)
+
+    def test_filter_book_by_name_success(self):
+        """
+        Test filter books by name successfuly
+        """
+
+        book_1 = sample_book('Filter By Name Book')
+        sample_book('Another Book')
+
+        res = self.client.get(BOOK_URL, {'name': 'Filter By Name Book'})
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(res.data), 1)
+        self.assertEqual(book_1.name, res.data[0]['name'])
+
+    def test_filter_book_by_publication_year_success(self):
+        """
+        Test filter books by when it was published successfuly
+        """
+        author_1 = sample_author('Boris')
+
+        payload = {
+            'name': '2012 London Olympics Photo Album',
+            'edition': '1st',
+            'publication_year': 2012,
+            'authors': [author_1.author_id]
+        }
+
+        book_1 = self.client.post(BOOK_URL, payload).data
+        sample_book('Another Book')
+
+        res = self.client.get(BOOK_URL, {'publication_year': 2012})
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(res.data), 1)
+        self.assertEqual(book_1['name'], res.data[0]['name'])
+
+    def test_filter_book_by_author_name_success(self):
+        """
+        Test filter books by author's name successfuly
+        """
+        author_1 = sample_author('John Steinbeck')
+
+        payload = {
+            'name': 'Of Mice and Men',
+            'edition': '1st',
+            'publication_year': 1937,
+            'authors': [author_1.author_id]
+        }
+
+        book_1 = self.client.post(BOOK_URL, payload).data
+        sample_book('Another Book')
+
+        res = self.client.get(BOOK_URL, {'author': 'steinbeck'})
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(res.data), 1)
+        self.assertEqual(book_1['name'], res.data[0]['name'])
