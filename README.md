@@ -8,7 +8,7 @@ Simple API using Django for creating books and authors
 - Docker Compose [version `1.27.4`]
 
 ## **Installation**
-1. Clone the repo: `git clone https://github.com/abuDarda97/book-api.git`
+1. Clone the repo
 2. Run `docker-compose build`
 3. Next run `docker-compose up`
 4. Access API on `http://localhost:8000/`
