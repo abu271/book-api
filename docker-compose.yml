@@ -2,8 +2,7 @@ version: "3.7"
 
 services:
   app:
-    build:
-      context: .
+    image: devchem/octo:bookapi_v1.0.0
     ports:
       - "8000:8000"
     volumes:
