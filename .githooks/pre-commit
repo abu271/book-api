@@ -4,4 +4,3 @@
 exec < /dev/tty
 # Run update version shell script from pre-commit
 ./scripts/update_version.sh
-

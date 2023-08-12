@@ -36,3 +36,6 @@ updated_version="$major.$minor.$patch"
 echo "$updated_version" > version.txt
 
 echo "Version updated to $updated_version"
+
+# To add updated version to staging area
+git add -u
