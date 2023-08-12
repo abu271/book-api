@@ -4,14 +4,20 @@
 Simple API using Django for creating books and authors
 
 ## **Requirements**
-- Docker [version `19.03.13`]
-- Docker Compose [version `1.27.4`]
+- Docker [version `>=19.03.13`]
+- Docker Compose [version `>=1.27.4`]
+- git [version `>=2.9`]
 
 ## **Installation**
 1. Clone the repo
 2. Run `docker-compose build`
 3. Next run `docker-compose up`
 4. Access API on `http://localhost:8000/`
+
+**Note:** Important to configure git hooks to enforce certain rules.
+Run this command in terminal in the root directory.
+
+`git config core.hooksPath .githooks`
 
 # **API Endpoints**
 In a RESTful API, endpoints (URLs) define the structure of the API and how end users access data from our application using the HTTP methods - GET, POST, PUT, DELETE.
