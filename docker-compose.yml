@@ -8,6 +8,7 @@ services:
 
   api:
     image: devchem/octo:bookapi_v1.0.0
+    container_name: book-api
     ports:
       - "8000:8000"
     volumes:
@@ -27,6 +28,7 @@ services:
 
   db:
     image: postgres:13-alpine
+    container_name: book-api-db
     environment:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
