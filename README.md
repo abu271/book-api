@@ -1,5 +1,5 @@
 # Django Book API
-![Django Book API](https://github.com/abuDarda97/book-api/workflows/Python%20application/badge.svg)
+![Django Book API](https://github.com/abu271/book-api/workflows/Python%20application/badge.svg)
 
 Simple API using Django for creating books and authors
 

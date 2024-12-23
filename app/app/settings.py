@@ -26,8 +26,11 @@ SECRET_KEY = 'm2#qzzw9_4px96u43^j)l=fu2t44t*9s$f0vzk_6mr_t+zuhp-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = [
+    'http://127.0.0.1:3004', 
+    'http://localhost:3004',
+    'localhost'
+]
 
 # Application definition
 
@@ -39,12 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'core',
     'author',
     'book'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -52,6 +57,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+# CORS settings
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3004',
+    'http://127.0.0.1:3004'
 ]
 
 ROOT_URLCONF = 'app.urls'
