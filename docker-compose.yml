@@ -1,13 +1,12 @@
 services:
   web:
     image: devchem/octo:bookstore_v0.1.0
-    container_name: book-web
     ports:
       - "3004:3004"
     environment:
       - VITE_BOOK_API_URL=http://localhost:8000
 
-  app:
+  api:
     image: devchem/octo:bookapi_v1.0.0
     ports:
       - "8000:8000"

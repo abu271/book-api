@@ -10,79 +10,33 @@ Simple API using Django for creating books and authors
 
 ## **Installation**
 1. Clone the repo
-2. Run `docker-compose build`
-3. Next run `docker-compose up`
+2. Run `docker compose build`
+3. Next run `docker compose up`
 4. Access API on `http://localhost:8000/`
 
-# **API Endpoints**
-In a RESTful API, endpoints (URLs) define the structure of the API and how end users access data from our application using the HTTP methods - GET, POST, PUT, DELETE.
+## Contributing
 
-## **Books**
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-## View
+For this project we like to follow **conventional commits**
 
-Endpoint |HTTP Method 
--- | -- |
-`/api/book/books/:id` | GET
+### Summary of Conventional Commits
 
-## List 
-Endpoint |HTTP Method 
--- | -- |
-`/api/book/books/{params}` | GET
+Conventional Commits is a specification for adding human and machine-readable meaning to commit messages. The key elements include:
 
-Optional params to filter the list of books
-Param |Type | Description 
--- | -- | --|
-name | string | the title name of the book
-publication_year | number | year the book was published 
-edition | number | the book edition
-authors | string | author's name
+- **feat**: A new feature for the user.
+- **fix**: A bug fix for the user.
+- **docs**: Documentation only changes.
+- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc).
+- **refactor**: A code change that neither fixes a bug nor adds a feature.
+- **perf**: A code change that improves performance.
+- **test**: Adding missing or correcting existing tests.
+- **build**: Changes that affect the build system or external dependencies.
+- **ci**: Changes to our CI configuration files and scripts.
+- **chore**: Other changes that don't modify src or test files.
+- **revert**: Reverts a previous commit.
 
-## Create
+For more details, visit the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) website.
 
-Endpoint |HTTP Method 
--- | -- |
-`/api/book/books` | POST
-
-Fields |Type | Description 
--- | -- | --|
-name | string | the title name of the book
-publication_year | number | year the book was published 
-edition | number | the book edition
-authors | number | the author's id
-
-## Edit
-
-Endpoint |HTTP Method 
--- | -- |
-`/api/book/books/:id` | PUT
-
-Updatable field |Type 
--- | -- |
-name | string
-publication_year | number
-edition | number
-authors | number
-
-## **Authors**
-
-## Create 
-
-Endpoint |HTTP Method 
--- | -- |
-`/api/author/authors` | POST
-
-Fields |Type | Description 
--- | -- | --|
-name | string | the full name of the author
-
-## View
-
-Endpoint |HTTP Method 
--- | -- |
-`/api/author/authors/:id` | GET
-
-## List
-Endpoint |HTTP Method 
--- | -- |
-`/api/author/authors` | GET
+### API Endpoints
+For detailed information on the available API endpoints, please refer to the [Endpoints documentation](Endpoints.md).
