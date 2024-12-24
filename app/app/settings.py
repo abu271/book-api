@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback-secret-key')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'http://127.0.0.1:3004', 
+    'http://127.0.0.1:3004',
     'http://localhost:3004',
     'localhost'
 ]
