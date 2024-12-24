@@ -2,8 +2,8 @@ FROM python:3.7-alpine
 LABEL maintainer="Abu Darda"
 
 # Set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 # Install dependencies
 COPY ./requirements.txt /requirements.txt
