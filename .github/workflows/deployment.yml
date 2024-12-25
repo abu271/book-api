@@ -25,6 +25,8 @@ jobs:
         chmod 600 private_key
         ssh -i private_key -o StrictHostKeyChecking=no $USERNAME@$HOST << 'EOF'
           cd /home/thor/apps/bookstore-app
+          docker compose -f docker-compose-prod.yml down
+
           if [ -f docker-compose-prod.yml ]; then
             rm docker-compose-prod.yml
           fi
@@ -47,6 +49,6 @@ jobs:
       run: |
         ssh -i private_key -o StrictHostKeyChecking=no $USERNAME@$HOST << 'EOF'
           cd /home/thor/apps/bookstore-app
-          docker-compose docker-compose-prod.yml up -d
+          docker compose -f docker-compose-prod.yml up -d
           exit
         EOF
