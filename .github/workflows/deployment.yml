@@ -40,7 +40,7 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
       run: |
         scp -i private_key -o StrictHostKeyChecking=no docker-compose-prod.yml $USERNAME@$HOST:/home/thor/apps/bookstore-app/
-        scp -i private_key -o StrictHostKeyChecking=no ./app/manage.py $USERNAME@$HOST:/home/thor/apps/bookstore-app/
+        scp -i private_key -o StrictHostKeyChecking=no ./app/manage.py $USERNAME@$HOST:/home/thor/apps/bookstore-app/app/
 
     - name: Start up containers
       env:

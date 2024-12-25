@@ -23,7 +23,7 @@ services:
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
     depends_on:
       - db
-    user: "user"  # Run the app service as the non-root user
+    user: "thor"  # Run the app service as the non-root user
 
   db:
     image: postgres:13-alpine
