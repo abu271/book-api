@@ -1,0 +1,52 @@
+name: Deploy to Linode
+
+on:
+  push:
+    branches: [ master, ops/deployment-pipeline ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install SSH client
+      run: sudo apt-get install -y openssh-client
+
+    - name: Shutdown running containers
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY }}
+        HOST: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+      run: |
+        echo "$SSH_KEY" > private_key
+        chmod 600 private_key
+        ssh -i private_key -o StrictHostKeyChecking=no $USERNAME@$HOST << 'EOF'
+          cd /home/thor/apps/bookstore-app
+          if [ -f docker-compose-prod.yml ]; then
+            rm docker-compose-prod.yml
+          fi
+          exit
+        EOF
+
+    - name: Copy docker-compose-prod.yml to server
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY }}
+        HOST: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+      run: |
+        scp -i private_key -o StrictHostKeyChecking=no docker-compose-prod.yml $USERNAME@$HOST:/home/thor/apps/bookstore-app/
+
+    - name: Start up containers
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY }}
+        HOST: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+      run: |
+        ssh -i private_key -o StrictHostKeyChecking=no $USERNAME@$HOST << 'EOF'
+          cd /home/thor/apps/bookstore-app
+          docker-compose docker-compose-prod.yml up -d
+          exit
+        EOF
