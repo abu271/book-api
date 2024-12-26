@@ -1,8 +1,6 @@
-name: Deploy to Linode
+name: Deploy to Prod
 
 on:
-  push:
-    branches: [ master, ops/deployment-pipeline ]
   workflow_dispatch:
     inputs:
       api_version:
