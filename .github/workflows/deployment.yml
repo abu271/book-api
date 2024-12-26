@@ -30,8 +30,8 @@ jobs:
         HOST: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
       run: |
-        ---= Deploying API version v${{ github.event.inputs.api_version }} =---
-        ---= Deploying Web version v${{ github.event.inputs.web_version }} =---
+        echo ---= Deploying API version v${{ github.event.inputs.api_version }} =---
+        echo ---= Deploying Web version v${{ github.event.inputs.web_version }} =---
         
         # Create a private key file from the SSH_KEY secret
         # set permissions to 600 which means only the owner can read and write
