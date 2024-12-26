@@ -3,6 +3,18 @@ name: Deploy to Linode
 on:
   push:
     branches: [ master, ops/deployment-pipeline ]
+  workflow_dispatch:
+  inputs:
+    api_version:
+      description: 'api version for docker image'
+      required: true
+      type: string
+    
+    web_version:
+      description: 'web version for docker image'
+      required: true
+      type: string
+
 
 jobs:
   deploy:

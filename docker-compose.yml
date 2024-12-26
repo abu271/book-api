@@ -10,6 +10,7 @@ services:
     image: devchem/octo:bookapi_v1.0.0
     ports:
       - "8000:8000"
+    # This volume is used for hot reloading
     volumes:
       - ./app:/app
     command: >
