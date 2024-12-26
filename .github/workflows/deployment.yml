@@ -12,10 +12,6 @@ on:
         description: 'web version for docker image'
         required: true
         type: string
-  push:
-    branches:
-      - 'ops/deployment-pipeline'
-
 
 jobs:
   deploy:
@@ -34,6 +30,11 @@ jobs:
         HOST: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
       run: |
+        ---= Deploying API version v${{ github.event.inputs.api_version }} =---
+        ---= Deploying Web version v${{ github.event.inputs.web_version }} =---
+        
+        # Create a private key file from the SSH_KEY secret
+        # set permissions to 600 which means only the owner can read and write
         echo "$SSH_KEY" > private_key
         chmod 600 private_key
         ssh -i private_key -o StrictHostKeyChecking=no $USERNAME@$HOST << 'EOF'
@@ -52,6 +53,11 @@ jobs:
         HOST: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
       run: |
+        # Passing the api_version and web_version to the docker-compose-prod.yml file
+        sed -i "s/{{api_version}}/${{ github.event.inputs.api_version }}/g" docker-compose-prod.yml
+        sed -i "s/{{web_version}}/${{ github.event.inputs.web_version }}/g" docker-compose-prod.yml
+
+        # Copy the docker-compose-prod.yml & manage.py file to the server
         scp -i private_key -o StrictHostKeyChecking=no docker-compose-prod.yml $USERNAME@$HOST:/home/thor/apps/bookstore-app/
         scp -i private_key -o StrictHostKeyChecking=no ./app/manage.py $USERNAME@$HOST:/home/thor/apps/bookstore-app/
 
