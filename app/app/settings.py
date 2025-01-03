@@ -29,7 +29,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'http://127.0.0.1:3004',
     'http://localhost:3004',
-    'localhost'
+    'localhost',
+    'www.abudarda.co.uk'
 ]
 
 # Application definition
@@ -62,7 +63,8 @@ MIDDLEWARE = [
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3004',
-    'http://127.0.0.1:3004'
+    'http://127.0.0.1:3004',
+    'http://abudarda.co.uk:3004'
 ]
 
 ROOT_URLCONF = 'app.urls'
