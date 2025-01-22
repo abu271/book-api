@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/author/', include('author.urls')),
     path('api/book/', include('book.urls')),
+    url(r'^auth/', include('drf_social_oauth2.urls', namespace='drf')),
 ]
