@@ -5,7 +5,7 @@ name: Django Book API
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, chore-migrate-artifact-workflow ]
 
 jobs:
   build:
