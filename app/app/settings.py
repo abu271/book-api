@@ -147,8 +147,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # Google configuration
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''#<your app id goes here>
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''#<your app secret goes here>
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''  # <your app id goes here>
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''  # <your app secret goes here>
 
 # Define SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE to get extra permissions from Google.
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
