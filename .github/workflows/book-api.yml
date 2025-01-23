@@ -43,7 +43,7 @@ jobs:
       run: cd app && flake8
     # upload artifacts
     - name: Upload math result for job 1
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: bookapi-artifact
         path: |
@@ -72,7 +72,7 @@ jobs:
     steps:
       # download artifacts
       - name: Download artifact from Build
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: bookapi-artifact
       # install python dependencies
@@ -97,7 +97,7 @@ jobs:
     steps:
     # download artifacts
     - name: Download artifact from Build
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: bookapi-artifact
     # build & upload docker image
