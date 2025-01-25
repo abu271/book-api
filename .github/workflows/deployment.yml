@@ -77,8 +77,7 @@ jobs:
           echo "DJANGO_SECRET_KEY is set to: $DJANGO_KEY"
           echo "DJANGO_SECRET_KEY is set to: $DJANGO_SECRET_KEY"
           echo "DB User is set to: $DB_USER"
-          echo "current directory is: $(pwd)"
-
+          echo "all env $(env | grep DJANGO_SEC)"
           echo ---= Starting containers =---
           docker compose -f docker-compose-prod.yml up -d
           exit
