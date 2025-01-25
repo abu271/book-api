@@ -144,8 +144,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # Google configuration
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '' #<your app id goes here>
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '' #<your app secret goes here>
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''  # <your app id goes here>
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''  # <your app secret goes here>
 
 # Define SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE to get extra permissions from Google.
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
@@ -156,7 +156,8 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         # OAuth
-        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',  # django-oauth-toolkit >= 1.0.0
+        # django-oauth-toolkit >= 1.0.0
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
         'drf_social_oauth2.authentication.SocialAuthentication',
     )
 }
