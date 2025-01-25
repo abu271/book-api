@@ -19,10 +19,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
-
+print(os.environ.get('DJANGO_SECRET_KEY', 'k2xp79d4)=8hn@700oh=4ji@)-n$s1(6^dhe_h9p4oc_i80vt0'))
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback-secret-key')
-
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'k2xp79d4)=8hn@700oh=4ji@)-n$s1(6^dhe_h9p4oc_i80vt0')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -31,6 +30,12 @@ ALLOWED_HOSTS = [
     'http://localhost:3004',
     'localhost',
     'www.abudarda.co.uk'
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3004',
+    'http://127.0.0.1:3004',
+    'http://abudarda.co.uk:3004'
 ]
 
 # Application definition
@@ -45,7 +50,6 @@ INSTALLED_APPS = [
     'oauth2_provider',
     'social_django',
     'drf_social_oauth2',
-    # 'social_core',
     'rest_framework',
     'corsheaders',
     'core',
@@ -64,12 +68,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# CORS settings
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3004',
-    'http://127.0.0.1:3004',
-    'http://abudarda.co.uk:3004'
-]
 
 ROOT_URLCONF = 'app.urls'
 
@@ -147,8 +145,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # Google configuration
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''#<your app id goes here>
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''#<your app secret goes here>
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '' #<your app id goes here>
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '' #<your app secret goes here>
 
 # Define SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE to get extra permissions from Google.
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
@@ -159,7 +157,6 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         # OAuth
-        # 'oauth2_provider.ext.rest_framework.OAuth2Authentication',  # django-oauth-toolkit < 1.0.0
         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',  # django-oauth-toolkit >= 1.0.0
         'drf_social_oauth2.authentication.SocialAuthentication',
     )
