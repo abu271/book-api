@@ -69,6 +69,9 @@ jobs:
       run: |
         ssh -i private_key -o StrictHostKeyChecking=no $USERNAME@$HOST << 'EOF'
           cd /home/thor/apps/bookstore-app
+          echo ---= Pulling images =---
+          docker compose -f docker-compose-prod.yml pull
+          echo ---= Starting containers =---
           docker compose -f docker-compose-prod.yml up -d
           exit
         EOF
