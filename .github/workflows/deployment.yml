@@ -73,6 +73,7 @@ jobs:
           docker compose -f docker-compose-prod.yml pull
           
           echo "DJANGO_SECRET_KEY is set to: $DJANGO_SECRET_KEY"
+          echo "DB User is set to: $DB_USER"
           echo "current directory is: $(pwd)"
 
           echo ---= Starting containers =---
