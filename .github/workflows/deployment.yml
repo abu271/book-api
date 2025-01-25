@@ -66,6 +66,7 @@ jobs:
         SSH_KEY: ${{ secrets.SSH_KEY }}
         HOST: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
+        DJANGO_SECRET_KEY: 'fake key'
       run: |
         ssh -i private_key -o StrictHostKeyChecking=no $USERNAME@$HOST << 'EOF'
           cd /home/thor/apps/bookstore-app
