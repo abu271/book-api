@@ -71,6 +71,9 @@ jobs:
           cd /home/thor/apps/bookstore-app
           echo ---= Pulling images =---
           docker compose -f docker-compose-prod.yml pull
+          
+          env | grep -i DJANGO_SECRET_KEY
+
           echo ---= Starting containers =---
           docker compose -f docker-compose-prod.yml up -d
           exit
