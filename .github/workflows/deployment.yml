@@ -72,6 +72,7 @@ jobs:
           echo ---= Pulling images =---
           docker compose -f docker-compose-prod.yml pull
           
+          source ~/.bashrc
           echo "DJANGO_SECRET_KEY is set to: $DJANGO_SECRET_KEY"
           echo "DB User is set to: $DB_USER"
           echo "current directory is: $(pwd)"
