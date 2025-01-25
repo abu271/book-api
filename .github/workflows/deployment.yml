@@ -72,7 +72,8 @@ jobs:
           echo ---= Pulling images =---
           docker compose -f docker-compose-prod.yml pull
           
-          echo $(env | grep -i DJANGO_SECRET_KEY)
+          echo "DJANGO_SECRET_KEY is set to: $DJANGO_SECRET_KEY"
+          echo "current directory is: $(pwd)"
 
           echo ---= Starting containers =---
           docker compose -f docker-compose-prod.yml up -d
