@@ -24,7 +24,8 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     user: "user"  # Run the app service as the non-root user
 
   db:
@@ -33,6 +34,11 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -q -d ${POSTGRES_DB} -U ${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
