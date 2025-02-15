@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', False)
 
 ALLOWED_HOSTS = [
     'http://127.0.0.1:3004',
@@ -145,8 +145,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # Google configuration
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''  # <your app id goes here>
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''  # <your app secret goes here>
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('GOOGLE_OAUTH_APP_ID', 'test_id')  # <your app id goes here>
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('GOOGLE_OAUTH_APP_SECRET', 'test_secret')  # <your app secret goes here>
 
 # Define SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE to get extra permissions from Google.
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
