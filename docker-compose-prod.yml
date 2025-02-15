@@ -21,6 +21,8 @@ services:
       - DB_PORT=${DB_PORT}
       - DB_PASSWORD=${DB_PASSWORD}
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - GOOGLE_OAUTH_APP_ID=${GOOGLE_OAUTH_APP_ID}
+      - GOOGLE_OAUTH_APP_SECRET=${GOOGLE_OAUTH_APP_SECRET}
     depends_on:
       db:
         condition: service_healthy
