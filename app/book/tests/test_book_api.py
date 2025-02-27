@@ -51,7 +51,7 @@ class BookApiTests(TestCase):
             'name': 'Django Cook Book',
             'edition': '2nd',
             'publication_year': 2005,
-            'authors': [author_1.author_id]
+            'authors': [author_1.name]
         }
         res = self.client.post(BOOK_URL, payload)
 
@@ -100,13 +100,13 @@ class BookApiTests(TestCase):
             'name': 'Looney Toons',
             'edition': '4th',
             'publication_year': 2019,
-            'authors': [author_1.author_id]
+            'authors': [author_1.name]
         }
         res = self.client.put(URL, data)
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(book_id, res.data['book_id'])
-        self.assertIn(author_1.author_id, res.data['authors'])
+        self.assertIn(author_1.name, res.data['authors'])
         self.assertNotEqual(book_1.name, res.data['name'])
         self.assertNotEqual(
             book_1.publication_year,
@@ -150,7 +150,7 @@ class BookApiTests(TestCase):
             'name': '2012 London Olympics Photo Album',
             'edition': '1st',
             'publication_year': 2012,
-            'authors': [author_1.author_id]
+            'authors': [author_1.name]
         }
 
         book_1 = self.client.post(BOOK_URL, payload).data
@@ -172,7 +172,7 @@ class BookApiTests(TestCase):
             'name': 'Of Mice and Men',
             'edition': '1st',
             'publication_year': 1937,
-            'authors': [author_1.author_id]
+            'authors': [author_1.name]
         }
 
         book_1 = self.client.post(BOOK_URL, payload).data
