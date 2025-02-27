@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from core.models import Book
+from core.models import Book, Author
 
 
 class BookSerializer(serializers.ModelSerializer):
@@ -9,7 +9,7 @@ class BookSerializer(serializers.ModelSerializer):
     authors = serializers.SlugRelatedField(
         slug_field='name',
         many=True,
-        read_only=True
+        queryset=Author.objects.all()
     )
     class Meta:
         model = Book
