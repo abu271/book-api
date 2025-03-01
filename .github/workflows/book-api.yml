@@ -61,7 +61,7 @@ jobs:
     # create docker postgres container for testing
     services:
       postgres: 
-        image: postgres:12.3-alpine
+        image: postgres:13-alpine
         env:
           POSTGRES_DB: github-workflow
           POSTGRES_USER: postgres
