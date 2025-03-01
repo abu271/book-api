@@ -14,6 +14,22 @@ Simple API using Django for creating books and authors
 3. Next run `docker compose up`
 4. Access API on `http://localhost:8000/`
 
+## **Setting up Python virtual enviroment**
+1. Create a virtual environment
+python -m venv venv
+
+2. Activate the virtual environment (Linux/macOS)
+source venv/bin/activate
+
+3. Activate the virtual environment (Windows)
+.\venv\Scripts\activate
+
+4. Install dependencies
+pip install -r requirements.txt
+
+5. Deactivate the virtual environment
+deactivate
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
