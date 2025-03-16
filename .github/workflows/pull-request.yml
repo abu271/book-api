@@ -66,12 +66,12 @@ jobs:
         labels: autopep8, automated pr
         reviewers: abu271
         branch: autopep8-patches
-    - name: Fail if autopep8 made changes
-      if: steps.autopep8.outputs.exit-code == 2
-      run: exit 1
     # lint code with flake8
     - name: Lint with flake8
       run: cd app && flake8
+    - name: Fail if autopep8 made changes
+      if: steps.autopep8.outputs.exit-code == 2
+      run: exit 1
 
   test:
     name: Unit Tests
