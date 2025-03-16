@@ -11,6 +11,7 @@ class BookSerializer(serializers.ModelSerializer):
         many=True,
         queryset=Author.objects.all()
     )
+
     class Meta:
         model = Book
         fields = ["book_id", "name", "publication_year", "edition", "authors"]
