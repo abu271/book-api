@@ -23,24 +23,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    # format code with autopep8
-    - name: autopep8
-      uses: peter-evans/autopep8@v1
-      with:
-        args: --recursive --in-place --aggressive --aggressive .
-    # create a pull request if autopep8 made changes
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3
-      with:
-        commit-message: "lint: autopep8 action fixes"
-        title: Fixes by autopep8 action
-        body: This is an auto-generated PR with fixes by autopep8.
-        labels: autopep8, automated pr
-        reviewers: abu271
-        branch: autopep8-patches
-    # lint code with flake8
-    - name: Lint with flake8
-      run: cd app && flake8
     # upload artifacts
     - name: Upload math result for job 1
       uses: actions/upload-artifact@v4
