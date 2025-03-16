@@ -100,7 +100,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install --upgrade setuptools
-          if [ -f requirements.txt]; then pip install -r requirements.txt; fi
+          pip install -r requirements.txt
       # run python tests
       - name: Run test
         run: cd app && python manage.py test
