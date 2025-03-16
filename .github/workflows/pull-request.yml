@@ -53,7 +53,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     # format code with autopep8
     - name: autopep8
-      uses: peter-evans/autopep8@v1
+      uses: peter-evans/autopep8@v2
       with:
         args: --recursive --in-place --aggressive --aggressive .
     # create a pull request if autopep8 made changes
@@ -67,7 +67,7 @@ jobs:
         reviewers: abu271
         branch: autopep8-patches
     - name: Fail if autopep8 made changes
-        if: steps.lint.outputs.exit-code == 2
+        if: steps.autopep8.outputs.exit-code == 2
         run: exit 1
     # lint code with flake8
     - name: Lint with flake8
