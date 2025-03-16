@@ -58,6 +58,7 @@ jobs:
         args: --exit-code --recursive --in-place --aggressive --aggressive .
     # create a pull request if autopep8 made changes
     - name: Create Pull Request
+      if: steps.autopep8.outputs.exit-code == 2
       uses: peter-evans/create-pull-request@v3
       with:
         commit-message: "lint: autopep8 action fixes"
