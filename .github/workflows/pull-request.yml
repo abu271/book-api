@@ -1,4 +1,4 @@
-name: Pull Request Linting
+name: Pull Request Checks
 
 on:
   pull_request:
@@ -11,6 +11,9 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Ensure the full commit history is fetched
+        ref: ${{ github.event.pull_request.base.sha }}
     # install python dependencies
     - name: Set up Python 3.13
       uses: actions/setup-python@v5
