@@ -16,19 +16,19 @@ Simple API using Django for creating books and authors
 
 ## **Setting up Python virtual enviroment**
 1. Create a virtual environment
-python -m venv venv
+`python -m venv venv`
 
 2. Activate the virtual environment (Linux/macOS)
-source venv/bin/activate
+`source venv/bin/activate`
 
     Activate the virtual environment (Windows)
-.\venv\Scripts\activate
+`.\venv\Scripts\activate`
 
 3. Install dependencies
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 4. Deactivate the virtual environment
-deactivate
+`deactivate`
 
 ## Contributing
 
