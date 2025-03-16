@@ -16,7 +16,10 @@ class Book(models.Model):
     name = models.CharField(max_length=255)
     edition = models.CharField(max_length=50)
     publication_year = models.IntegerField()
-    authors = models.ManyToManyField(Author, related_name='authors', related_query_name='Author.name')
+    authors = models.ManyToManyField(
+        Author,
+        related_name='authors',
+        related_query_name='Author.name')
 
     def __str__(self):
         return self.name
