@@ -13,6 +13,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='book',
             name='authors',
-            field=models.ManyToManyField(related_name='authors', related_query_name='Author.name', to='core.author'),
+            field=models.ManyToManyField(
+                related_name='authors',
+                related_query_name='Author.name',
+                to='core.author'),
         ),
     ]
