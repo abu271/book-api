@@ -8,5 +8,5 @@ class AuthorSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Author
-        fields = ["author_id", "name"]
-        read_only_fields = ["author_id"]
+        fields = ['author_id', 'name']
+        read_only_fields = ['author_id']

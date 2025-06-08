@@ -1,13 +1,13 @@
 from rest_framework.routers import DefaultRouter
 from django.urls import path, include
-from book import views
+from user import views
 
-app_name = 'book'
+app_name = 'user'
 
 router = DefaultRouter()
-router.register('books', views.BookViewSet, app_name)
+router.register('users', views.UserViewSet, app_name)
 
 
 urlpatterns = [
-    path('', include((router.urls)))
+  path('', include((router.urls)))
 ]
