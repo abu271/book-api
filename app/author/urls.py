@@ -5,7 +5,7 @@ from author import views
 app_name = 'author'
 
 router = DefaultRouter()
-router.register("authors", views.AuthorViewSet)
+router.register('authors', views.AuthorViewSet, app_name)
 
 urlpatterns = [
     path('', include((router.urls)))
