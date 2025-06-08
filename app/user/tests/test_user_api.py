@@ -25,7 +25,7 @@ class UserCreateTests(TestCase):
             'last_name': 'User',
             'email': 'testuser@example.com',
             'password': 'strongpassword123',
-            'date_of_birth': '1990-01-01',
+            'date_of_birth': '01-01-1999',
             'gender': 'Other'
         }
         response = self.client.post(USER_URL, payload, format='json')
