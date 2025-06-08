@@ -79,3 +79,75 @@ class ModelTests(TestCase):
         self.assertTrue(
             isinstance(book.book_id, int)
         )
+
+    def test_create_user_with_required_fields(self):
+        """
+        Test creating a user with required fields only
+        """
+        user = models.User.objects.create(
+            username='testuser',
+            email='testuser@example.com',
+            password='testpassword',
+            gender='Other'
+        )
+        self.assertEqual(str(user), user.username)
+        self.assertTrue(isinstance(user.user_id, int))
+        self.assertEqual(user.email, 'testuser@example.com')
+        self.assertEqual(user.gender, 'Other')
+
+    def test_create_user_with_all_fields(self):
+        """
+        Test creating a user with all fields
+        """
+        user = models.User.objects.create(
+            username='janedoe',
+            first_name='Jane',
+            last_name='Doe',
+            email='janedoe@example.com',
+            password='securepassword',
+            date_of_birth='1995-05-15',
+            gender='Female',
+            ethnicity='Asian',
+            religion='None'
+        )
+        self.assertEqual(user.first_name, 'Jane')
+        self.assertEqual(user.last_name, 'Doe')
+        self.assertEqual(user.date_of_birth, '1995-05-15')
+        self.assertEqual(user.ethnicity, 'Asian')
+        self.assertEqual(user.religion, 'None')
+
+    def test_user_unique_username(self):
+        """
+        Test that creating a user with a duplicate username raises an error
+        """
+        models.User.objects.create(
+            username='uniqueuser',
+            email='unique1@example.com',
+            password='password',
+            gender='Other'
+        )
+        with self.assertRaises(Exception):
+            models.User.objects.create(
+                username='uniqueuser',
+                email='unique2@example.com',
+                password='password',
+                gender='Other'
+            )
+
+    def test_user_unique_email(self):
+        """
+        Test that creating a user with a duplicate email raises an error
+        """
+        models.User.objects.create(
+            username='userone',
+            email='uniqueemail@example.com',
+            password='password',
+            gender='Other'
+        )
+        with self.assertRaises(Exception):
+            models.User.objects.create(
+                username='usertwo',
+                email='uniqueemail@example.com',
+                password='password',
+                gender='Other'
+            )
