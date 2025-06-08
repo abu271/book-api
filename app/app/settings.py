@@ -37,6 +37,12 @@ CORS_ALLOWED_ORIGINS = [
     'http://abudarda.co.uk:3004'
 ]
 
+# Django REST Framework settings for DD-MM-YYYY date format
+REST_FRAMEWORK = {
+    'DATE_INPUT_FORMATS': ['%d-%m-%Y'],
+    'DATE_FORMAT': '%d-%m-%Y',
+}
+
 # Application definition
 
 INSTALLED_APPS = [
