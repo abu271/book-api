@@ -79,7 +79,7 @@ class ModelTests(TestCase):
         self.assertTrue(
             isinstance(book.book_id, int)
         )
-    
+
     def test_create_user_with_required_fields(self):
         """
         Test creating a user with required fields only

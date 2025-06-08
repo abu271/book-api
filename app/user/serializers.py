@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username','email', 'password']
+        fields = ['first_name', 'last_name', 'username', 'email', 'password']
         read_only_fields = ['user_id', 'date_of_birth']
         extra_kwargs = {
             'password': {
@@ -19,4 +19,4 @@ class UserSerializer(serializers.ModelSerializer):
             }
         }
 
-    #TODO: Add action decorator for listing users endpoint
+    # TODO: Add action decorator for listing users endpoint
