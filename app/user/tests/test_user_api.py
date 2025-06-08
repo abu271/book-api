@@ -6,11 +6,13 @@ from core.models import User
 
 USER_URL = reverse("user:user-list")
 
+
 def detail_url(user_id):
     """
     Return user detail URL
     """
     return reverse("user:user-detail", args=[user_id])
+
 
 class UserCreateTests(TestCase):
     def setUp(self):
