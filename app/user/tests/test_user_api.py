@@ -3,6 +3,7 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APIClient
 from core.models import User
+from django.contrib.auth import get_user_model
 
 USER_URL = reverse("user:user-list")
 
@@ -30,7 +31,9 @@ class UserCreateTests(TestCase):
         }
         response = self.client.post(USER_URL, payload, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertTrue(User.objects.filter(username='testuser').exists())
+        self.assertTrue(
+            get_user_model().objects.filter(
+                username='testuser').exists())
 
     def test_create_user_missing_required_field(self):
         payload = {
@@ -43,7 +46,7 @@ class UserCreateTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_create_user_duplicate_username(self):
-        User.objects.create(
+        get_user_model().objects.create(
             username='testuser',
             email='testuser@example.com',
             password='password',

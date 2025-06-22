@@ -23,6 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', False)
+# Set auth user model to use custom user model
+AUTH_USER_MODEL = 'core.User'
 
 ALLOWED_HOSTS = [
     'http://127.0.0.1:8000',
