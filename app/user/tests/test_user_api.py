@@ -31,7 +31,9 @@ class UserCreateTests(TestCase):
         }
         response = self.client.post(USER_URL, payload, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertTrue(get_user_model().objects.filter(username='testuser').exists())
+        self.assertTrue(
+            get_user_model().objects.filter(
+                username='testuser').exists())
 
     def test_create_user_missing_required_field(self):
         payload = {
