@@ -1,7 +1,8 @@
 from rest_framework import serializers
-from rest_framework.decorators import action
 from rest_framework.response import Response
 from core.models import User
+from django.contrib.auth import get_user_model
+
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -24,5 +25,8 @@ class UserSerializer(serializers.ModelSerializer):
                 'min_length': 8
             }
         }
+    def create(self, validated_data):
+        """Create a new user with encrypted password and return it"""
+        return get_user_model().objects.create_user(**validated_data)
 
     # TODO: Add action decorator for listing users endpoint

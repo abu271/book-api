@@ -7,7 +7,7 @@ In a RESTful API, endpoints (URLs) define the structure of the API and how end u
 
 Endpoint | HTTP Method 
 -- | -- |
-`/authtoken/` | POST
+`/api/v1/authtoken/` | POST
 
 Fields | Type | Description 
 -- | -- | --|
@@ -26,12 +26,12 @@ password | string | user's password
 
 Endpoint | HTTP Method 
 -- | -- |
-`/api/v1/book/books/:id` | GET
+`/api/v1/books/:id` | GET
 
 ### List 
 Endpoint | HTTP Method 
 -- | -- |
-`/api/v1/book/books` | GET
+`/api/v1/books` | GET
 
 Optional params to filter the list of books  
 Param | Type | Description 
@@ -45,7 +45,7 @@ authors | string | author's name
 
 Endpoint | HTTP Method 
 -- | -- |
-`/api/v1/book/books` | POST
+`/api/v1/books` | POST
 
 Fields | Type | Description 
 -- | -- | --|
@@ -58,7 +58,7 @@ authors | number | the author's id
 
 Endpoint | HTTP Method 
 -- | -- |
-`/api/v1/book/books/:id` | PUT
+`/api/v1/books/:id` | PUT
 
 Updatable field | Type 
 -- | -- |
@@ -75,7 +75,7 @@ authors | number
 
 Endpoint | HTTP Method 
 -- | -- |
-`/api/v1/author/authors` | POST
+`/api/v1/authors` | POST
 
 Fields | Type | Description 
 -- | -- | --|
@@ -85,12 +85,12 @@ name | string | the full name of the author
 
 Endpoint | HTTP Method 
 -- | -- |
-`/api/v1/author/authors/:id` | GET
+`/api/v1/authors/:id` | GET
 
 ### List
 Endpoint | HTTP Method 
 -- | -- |
-`/api/v1/author/authors` | GET
+`/api/v1/authors` | GET
 
 ---
 
@@ -100,7 +100,7 @@ Endpoint | HTTP Method
 
 Endpoint | HTTP Method 
 -- | -- |
-`/api/v1/user/users` | POST
+`/api/v1/users` | POST
 
 Fields | Type | Description 
 -- | -- | --|
@@ -118,10 +118,10 @@ religion | string | (optional) religion
 
 Endpoint | HTTP Method 
 -- | -- |
-`/api/v1/user/users/:id` | GET
+`/api/v1/users/:id` | GET
 
 ### List
 
 Endpoint | HTTP Method 
 -- | -- |
-`/api/v1/user/users` | GET
+`/api/v1/users` | GET
