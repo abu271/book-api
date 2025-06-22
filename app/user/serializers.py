@@ -4,7 +4,6 @@ from core.models import User
 from django.contrib.auth import get_user_model
 
 
-
 class UserSerializer(serializers.ModelSerializer):
     """
     Serializer for user objects
@@ -25,6 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
                 'min_length': 8
             }
         }
+
     def create(self, validated_data):
         """Create a new user with encrypted password and return it"""
         return get_user_model().objects.create_user(**validated_data)
