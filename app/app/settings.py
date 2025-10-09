@@ -30,7 +30,7 @@ ALLOWED_HOSTS = [
     'http://127.0.0.1:8000',
     'http://localhost:8000',
     'localhost',
-    'www.abudarda.co.uk'
+    '.abudarda.co.uk'
 ]
 
 CORS_ALLOWED_ORIGINS = [
