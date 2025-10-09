@@ -36,7 +36,7 @@ ALLOWED_HOSTS = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3004',
     'http://127.0.0.1:3004',
-    'http://abudarda.co.uk:3004'
+    'http://app.abudarda.co.uk'
 ]
 
 # Django REST Framework settings for DD-MM-YYYY date format
