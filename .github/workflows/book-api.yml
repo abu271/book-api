@@ -40,6 +40,8 @@ jobs:
     name: Security Scan
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       

@@ -9,10 +9,16 @@ on:
     # Run security scans daily at 2 AM UTC
     - cron: '0 2 * * *'
 
+permissions:
+  contents: read
+  security-events: write  # For uploading SARIF results
+
 jobs:
   dependency-scan:
     name: Dependency Vulnerability Scan
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       
@@ -44,6 +50,8 @@ jobs:
   bandit-scan:
     name: SAST - Bandit Security Scan
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       
@@ -72,6 +80,8 @@ jobs:
   secret-scan:
     name: Secret Scanning - Gitleaks
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
         with:
@@ -86,6 +96,9 @@ jobs:
   trivy-scan:
     name: Container Image Scan - Trivy
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write  # For uploading SARIF results
     steps:
       - uses: actions/checkout@v4
       
@@ -116,6 +129,8 @@ jobs:
   safety-scan:
     name: Safety - Python Dependency Check
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       
@@ -144,6 +159,8 @@ jobs:
   semgrep-scan:
     name: SAST - Semgrep Security Scan
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     container:
       image: semgrep/semgrep
     steps:
