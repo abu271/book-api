@@ -3,6 +3,13 @@
 
 Simple API using Django for creating books and authors
 
+## **Security**
+This project uses comprehensive security scanning in CI/CD. See [Security Tools Documentation](.github/SECURITY_TOOLS.md) for details on:
+- Dependency vulnerability scanning (pip-audit, Safety)
+- SAST code analysis (Bandit, Semgrep, CodeQL)
+- Secret scanning (Gitleaks)
+- Container image scanning (Trivy)
+
 ## **Requirements**
 - Docker [version `>=19.03.13`]
 - Docker Compose [version `>=1.27.4`]
