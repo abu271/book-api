@@ -64,10 +64,35 @@ jobs:
       if: steps.autopep8.outputs.exit-code == 2
       run: exit 1
 
+  security-check:
+    name: Quick Security Check
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.13
+      
+      - name: Install security tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install bandit[toml] pip-audit safety
+      
+      - name: Run Bandit
+        run: bandit -r app/ -ll
+        continue-on-error: true
+      
+      - name: Run pip-audit
+        run: pip-audit -r requirements.txt
+        continue-on-error: true
+
   test:
     name: Unit Tests
     runs-on: ubuntu-latest
-    needs: lint
+    needs: security-check
     # create docker postgres container for testing
     services:
       postgres: 
